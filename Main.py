@@ -1,4 +1,6 @@
 import pygame
+import Rpg.game
+import Game
 # pygame setup
 
 
@@ -13,7 +15,7 @@ class Window:
         self.clock = pygame.time.Clock() #clock object used to measure frames and dt
         self.running = True #running boolean to see if game should still run
         self.dt = 0 #dt/deltaTime used to get a more crisp movement at different framerates
-        self.game: Game
+        self.game: Game.Game
         self.game = g #this is the game object which is updated and drawn with window class
         self.runGame()
         pygame.quit()
@@ -27,10 +29,13 @@ class Window:
                 if event.type == pygame.QUIT:
                     self.running = False
             keys = pygame.key.get_pressed()# key presses (only one is in this method for closing the game)
+            ga.keyPressed(keys)
             if keys[pygame.K_ESCAPE]:
                 self.running = False
-
-
+            
+            mouse = pygame.mouse.get_pressed()# mouse presses
+            print(type(mouse))
+            ga.mousePressed()
             self.game.draw(self.screen)
 
             self.game.update(self.dt)
@@ -38,21 +43,9 @@ class Window:
             self.dt = self.clock.tick(60) / 1000 # does clock.tick and gets deltatime
 
 
-class Game:
-    
-    def __init__(self):
-        pass
-
-    def update(self,dt: int):
-        dt: int
-        """updates the game and all the variables in game"""
-        pass
-
-    def draw(self,scr: pygame.surface.Surface):
-        """draws the objects from game to window Class"""
-        pass
 
 
 
-ga = Game()
+
+ga = Rpg.game.RPG()
 game = Window(ga)

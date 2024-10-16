@@ -1,6 +1,7 @@
-import Main
+import Game
+import pygame
 
-class RPG(Main.Game):
+class RPG(Game.Game):
     def __init__(self):
         pass
 
@@ -10,4 +11,6 @@ class RPG(Main.Game):
 
     def draw(self,scr):
         """draws the objects from game to window Class"""
-        pass
+        pygame.draw.rect(scr,(255,255,255), [100,100,100,100])
+
+
