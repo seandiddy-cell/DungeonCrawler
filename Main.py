@@ -34,8 +34,7 @@ class Window:
                 self.running = False
             
             mouse = pygame.mouse.get_pressed()# mouse presses
-            print(type(mouse))
-            ga.mousePressed()
+            ga.mousePressed(mouse)
             self.game.draw(self.screen)
 
             self.game.update(self.dt)
